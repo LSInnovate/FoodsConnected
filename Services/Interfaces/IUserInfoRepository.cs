@@ -4,7 +4,7 @@ namespace FoodsConnected.Services.Interfaces
 {
     public interface IUserInfoRepository
     {
-        Task<bool> UserNameExistsAsync(string userName);
+        Task<bool> UserNameExistsAsync(string userName, int? excludingUserId = null);
         void AddUser(UserEntity user);
         Task<bool> SaveChangesAsync();
         Task<IEnumerable<UserEntity>> GetUsersAsync();

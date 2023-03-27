@@ -75,7 +75,7 @@ namespace FoodsConnected.Controllers
                 return userNotFoundReturn(userId);
             }
 
-            if (await _userInfoRepository.UserNameExistsAsync(user.Name))
+            if (await _userInfoRepository.UserNameExistsAsync(user.Name, userId))
             {
                 return Conflict("User name already exists");
             }

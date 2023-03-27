@@ -15,9 +15,9 @@ namespace FoodsConnected.Services
                 throw new ArgumentNullException(nameof(context));
         }
 
-        public async Task<bool> UserNameExistsAsync(string userName)
+        public async Task<bool> UserNameExistsAsync(string userName, int? excludingUserId = null)
         {
-            return await _context.Users.Where(w => w.Name.ToLower() == userName.ToLower()).AnyAsync();
+            return await _context.Users.Where(w => w.Name.ToLower() == userName.ToLower() && w.Id != excludingUserId).AnyAsync();
         }
 
         public void AddUser(UserEntity user)
